@@ -47,7 +47,7 @@ body {
 /* HERO */
 .hero {
   height: 90vh;
-  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+  background: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
               url('lolipop/EXPERIENCIA DE LUJO SPA LOLIPOP/lujo3.jpg');
   background-size: cover;
   background-position: center;
