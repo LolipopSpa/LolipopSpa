@@ -80,7 +80,7 @@ body {
   opacity: 0.85;
 }
 
-/* BOTON SECUNDARIO (ESCRIBINOS) */
+/* BOTON SECUNDARIO */
 .btn-secondary {
   margin-top: 25px;
   display: inline-block;
@@ -130,7 +130,7 @@ h2::after {
   gap: 25px;
 }
 
-/* CARDS PREMIUM */
+/* CARDS */
 .card {
   border-radius: 20px;
   overflow: hidden;
@@ -144,10 +144,10 @@ h2::after {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* 🔥 IMÁGENES ARREGLADAS (NO MÁS CORTES FEOS) */
+/* 🔥 IMAGEN MÁS ALTA */
 .main-img {
   width: 100%;
-  height: 320px; /* MÁS ALTO */
+  height: 380px;
   object-fit: cover;
   transition: 0.4s;
 }
@@ -156,8 +156,13 @@ h2::after {
   transform: scale(1.05);
 }
 
+/* 🔥 CARD MÁS LARGA */
 .card-body {
   padding: 20px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .desc {
@@ -166,21 +171,19 @@ h2::after {
   margin: 10px 0 15px;
 }
 
-/* CONTACTO */
-.contact-text {
-  margin-bottom: 15px;
-}
-
 /* REDES */
 .socials {
   margin-top: 15px;
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
 }
 
+/* 🔥 ICONOS IGUALADOS */
 .icon {
-  width: 45px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
   transition: 0.3s;
 }
 
@@ -194,14 +197,20 @@ h2::after {
   bottom: 20px;
   right: 20px;
   background: white;
-  padding: 12px;
+  padding: 15px;
   border-radius: 50%;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   z-index: 999;
+  transition: 0.3s;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
 }
 
 .whatsapp-icon {
-  width: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 /* MOBILE */
@@ -237,7 +246,7 @@ h2::after {
   }
 
   .main-img {
-    height: 220px; /* ajustado mobile */
+    height: 260px;
   }
 }
 
