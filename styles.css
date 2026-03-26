@@ -66,7 +66,7 @@ body {
   margin: 10px 0 20px;
 }
 
-/* BOTON */
+/* BOTON PRINCIPAL */
 .btn {
   background: linear-gradient(45deg, #f8c8dc, #d4af37);
   padding: 12px 25px;
@@ -80,10 +80,47 @@ body {
   opacity: 0.85;
 }
 
+/* BOTON SECUNDARIO (ESCRIBINOS) */
+.btn-secondary {
+  margin-top: 25px;
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: 2px solid #f8c8dc;
+  color: #e48ab0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #f8c8dc;
+  color: white;
+}
+
 /* SECCIONES */
 .section {
   padding: 60px 20px;
   text-align: center;
+}
+
+/* TITULOS PREMIUM */
+h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+  color: #e48ab0;
+}
+
+h2::after {
+  content: "";
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, #f8c8dc, #d4af37);
+  position: absolute;
+  left: 20%;
+  bottom: -8px;
+  border-radius: 10px;
 }
 
 /* GRID */
@@ -107,9 +144,10 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
+/* 🔥 IMÁGENES ARREGLADAS (NO MÁS CORTES FEOS) */
 .main-img {
   width: 100%;
-  height: 240px;
+  height: 320px; /* MÁS ALTO */
   object-fit: cover;
   transition: 0.4s;
 }
@@ -128,19 +166,45 @@ body {
   margin: 10px 0 15px;
 }
 
-/* WHATSAPP */
+/* CONTACTO */
+.contact-text {
+  margin-bottom: 15px;
+}
+
+/* REDES */
+.socials {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.icon {
+  width: 45px;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+}
+
+/* 🔥 WHATSAPP FLOTANTE PRO */
 .whatsapp {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #25D366;
-  color: white;
-  font-size: 22px;
-  padding: 15px;
+  background: white;
+  padding: 12px;
   border-radius: 50%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  z-index: 999;
 }
 
-/* MOBILE FIX */
+.whatsapp-icon {
+  width: 30px;
+}
+
+/* MOBILE */
 .menu-icon {
   display: none;
   font-size: 25px;
@@ -173,7 +237,7 @@ body {
   }
 
   .main-img {
-    height: 200px;
+    height: 220px; /* ajustado mobile */
   }
 }
 
