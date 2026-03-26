@@ -196,21 +196,26 @@ h2::after {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: white;
-  padding: 15px;
+  background: #25D366; /* verde oficial */
+  padding: 16px;
   border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   z-index: 999;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .whatsapp:hover {
   transform: scale(1.1);
 }
 
+/* ICONO */
 .whatsapp-icon {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 /* MOBILE */
