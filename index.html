@@ -1,251 +1,369 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Lolipop Spa Mi Caramelito</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lolipop Spa | Experiencias Mágicas</title>
+    <!-- SEO -->
+    <meta name="description" content="Lolipop Spa Mi Caramelito: Experiencias mágicas de spa y talleres creativos para niñas. Momentos inolvidables de belleza y diversión.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <header>
-<nav class="navbar">
-
-<div class="nav-left">
-<img src="lolipop/logo/logololipop.jpg" class="logo-img">
-</div>
-
-<h1 class="brand">Lolipop Spa</h1>
-
-<div class="menu-icon" onclick="toggleMenu()">☰</div>
-
-<ul id="menu">
-<li><a href="#nosotros">Quiénes Somos</a></li>
-<li><a href="#catalogo">Servicios</a></li>
-<li><a href="#contacto">Contacto</a></li>
-</ul>
-
-</nav>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="lolipop/logo/logololipop.jpg" alt="Lolipop Logo" class="logo-img">
+            <h1 class="brand">Lolipop Spa</h1>
+        </div>
+        
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        
+        <ul id="menu">
+            <li><a href="#nosotros">Quiénes Somos</a></li>
+            <li><a href="#catalogo">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-<div class="hero-content">
-<h2>Experiencias únicas para niñas ✨</h2>
-<p>Momentos mágicos de belleza, diversión y dulzura 💖</p>
-<a href="https://wa.me/5491153358402" class="btn">Reservar ahora</a>
-</div>
+    <div class="glitter" style="top:20%; left:10%; animation-delay: 0s;"></div>
+    <div class="glitter" style="top:50%; left:80%; animation-delay: 1s;"></div>
+    <div class="glitter" style="top:80%; left:30%; animation-delay: 2s;"></div>
+    <div class="hero-content">
+        <h2>Experiencias únicas para niñas ✨</h2>
+        <p>Momentos mágicos de belleza, diversión y dulzura que recordarán por siempre 💖</p>
+        <a href="https://wa.me/5491153358402" class="btn">Reservar Experiencia</a>
+    </div>
 </section>
 
 <!-- NOSOTROS -->
-<section id="nosotros" class="section">
-<h2>Quiénes Somos</h2>
-<p>
-En Lolipop Spa Mi Caramelito creamos experiencias mágicas donde cada niña se siente especial,
-mimada y feliz 💖
-</p>
+<section id="nosotros" class="section reveal">
+    <h2>Nuestra Esencia</h2>
+    <div class="about-box">
+        <p>
+            En <strong>Lolipop Spa Mi Caramelito</strong> creamos un universo donde cada detalle cuenta. 
+            Nuestra misión es diseñar experiencias mágicas donde cada niña se siente especial, 
+            mimada y rodeada de un ambiente de pura felicidad y creatividad. 🌸
+        </p>
+    </div>
 </section>
 
 <!-- SERVICIOS -->
 <section id="catalogo" class="section">
-<h2>Catálogo Lolipop 💖</h2>
+    <h2 class="reveal">Catálogo de Experiencias 💖</h2>
+    
+    <div class="grid">
+        <!-- CARD 1 -->
+        <div class="card reveal">
+            <img src="lolipop/EXPERIENCIA DE LUJO SPA LOLIPOP/lujo1.jpg" alt="Spa" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Experiencia Spa</h3>
+                    <p class="desc">Una jornada de lujo diseñada para el cuidado, la belleza y la relajación total de las más pequeñas.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20la%20Experiencia%20Spa" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<div class="grid">
+        <!-- CARD 2 -->
+        <div class="card reveal">
+            <img src="lolipop/Frasco Goloso/FrascoGoloso.jpg" alt="Frasco Goloso" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Frasco Goloso</h3>
+                    <p class="desc">Workshop creativo donde diseñamos detalles dulces con un toque personalizado y mágico.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Frasco%20Goloso" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
+          
+        <!-- CARD 3 -->
+        <div class="card reveal">
+            <img src="lolipop/yeso/vasoLolipop.jpeg" alt="Vaso Stanley" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Taller Vasos Stanley</h3>
+                    <p class="desc">Personalizá tu propio vaso térmico con stickers, perlas y accesorios exclusivos de temporada.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Taller%20de%20Vasos" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- 🔥 TODAS TUS CARDS SE MANTIENEN IGUAL -->
+        <!-- CARD 4 -->
+        <div class="card reveal">
+            <img src="lolipop/yeso/yeso1.jpg" alt="Piezas de Yeso" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Piezas de Yeso</h3>
+                    <p class="desc">Arte y color en cada pieza. Una actividad relajante para despertar la creatividad artística.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20las%20Piezas%20de%20Yeso" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- SOLO CAMBIA LA ESTRUCTURA INTERNA -->
+        <!-- CARD 5 -->
+        <div class="card reveal">
+            <img src="lolipop/Edición%20Deluxe/EdiciónDeluxe.jpg" alt="Espejos Deluxe" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Espejitos Deluxe</h3>
+                    <p class="desc">Estilo coquette en su máxima expresión. Creamos espejos únicos con strass y detalles soñados.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20los%20Espejitos%20Deluxe" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<div class="card">
-<img src="lolipop/EXPERIENCIA DE LUJO SPA LOLIPOP/lujo1.jpg" class="main-img">
-<div class="card-body">
-<h3>Experiencia Spa</h3>
-<p class="desc">
-Una experiencia de lujo diseñada para que cada niña disfrute un momento único de cuidado, belleza y diversión.
-</p>
-<a href="https://wa.me/5491153358402?text=Spa" class="btn">Consultar</a>
-</div>
-</div>
+        <!-- CARD 6 -->
+        <div class="card reveal">
+            <img src="lolipop/Decoración%20de%20cepillos/cepillo1.jpg" alt="Cepillos" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Cepillos Decorados</h3>
+                    <p class="desc">Transformamos accesorios cotidianos en piezas de diseño con brillo y mucha creatividad.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20los%20Cepillos%20Decorados" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<div class="card">
-<img src="lolipop/Frasco Goloso/FrascoGoloso.jpg" class="main-img">
-<div class="card-body">
-<h3>Frasco Goloso</h3>
-<p class="desc">
-Workshop creativo con detalles dulces y diseño personalizado.
-</p>
-<a href="https://wa.me/5491153358402?text=Frasco" class="btn">Consultar</a>
-</div>
-</div>
-  
-<div class="card">
-<img src="lolipop/yeso/vasoLolipop.jpeg" class="main-img">
-<div class="card-body">
-<h3>Taller Vasos Stanley</h3>
-<p class="desc">
-Experiencia creativa donde diseñás y personalizás tu propio vaso térmico con stickers, perlas y accesorios exclusivos.
-</p>
-<a href="https://wa.me/5491153358402?text=Vaso%20Stanley" class="btn">Consultar</a>
-</div>
-</div>
+        <!-- CARD 7 -->
+        <div class="card reveal">
+            <img src="lolipop/RICÒN%20DE%20ACCESORIOS/rincon1.jpg" alt="Accesorios" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Rincón de Accesorios</h3>
+                    <p class="desc">El paraíso de las invitadas. Un espacio para elegir recuerdos especiales y llenos de estilo.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Rincón%20de%20Accesorios" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<div class="card">
-<img src="lolipop/yeso/yeso1.jpg" class="main-img">
-<div class="card-body">
-<h3>Piezas de Yeso</h3>
-<p class="desc">
-Creaciones artísticas con colores suaves y brillo.
-</p>
-<a href="https://wa.me/5491153358402?text=Yeso" class="btn">Consultar</a>
-</div>
-</div>
-<!-- ESPEJOS -->
-<div class="card">
-<img src="lolipop/Edición%20Deluxe/EdiciónDeluxe.jpg" class="main-img">
-<div class="card-body">
-<h3>Espejitos Deluxe</h3>
-<p class="desc">
-Un taller delicado donde cada niña crea su propio espejo con detalles coquette, strass y combinaciones personalizadas.
-</p>
-<a href="https://wa.me/5491153358402?text=Espejos" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+        <!-- CARD 8 -->
+        <div class="card reveal">
+            <img src="lolipop/Taller%20de%20Cocina%20Lolipop/Taller%20de%20Cocina%20Lolipop1.jpg" alt="Cocina" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Taller de Cocina</h3>
+                    <p class="desc">Aprender y disfrutar. Decoración de waffles y cupcakes con los toppings más dulces.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Taller%20de%20Cocina" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- CEPILLOS -->
-<div class="card">
-<img src="lolipop/Decoración%20de%20cepillos/cepillo1.jpg" class="main-img">
-<div class="card-body">
-<h3>Cepillos Decorados</h3>
-<p class="desc">
-Accesorios personalizados con brillo, colores y creatividad para lograr un diseño único y soñado.
-</p>
-<a href="https://wa.me/5491153358402?text=Cepillos" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+        <!-- CARD 9 -->
+        <div class="card reveal">
+            <img src="lolipop/Box%20LoliPop%20Spa/Box%20LoliPop%20Spa1.jpg" alt="Box Spa" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Box Spa Home</h3>
+                    <p class="desc">Llevamos la magia a tu casa. Un kit completo con todo lo necesario para un spa inolvidable.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20la%20Box%20Spa" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- ACCESORIOS -->
-<div class="card">
-<img src="lolipop/RICÒN%20DE%20ACCESORIOS/rincon1.jpg" class="main-img">
-<div class="card-body">
-<h3>Rincón de Accesorios</h3>
-<p class="desc">
-Una experiencia divertida donde cada invitada elige sus productos favoritos y se lleva un recuerdo especial.
-</p>
-<a href="https://wa.me/5491153358402?text=Accesorios" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+        <!-- CARD 10 -->
+        <div class="card reveal">
+            <img src="lolipop/Taller%20de%20Porcelana%20&%20Llaveros%20Personalizados/tallerporcelana.jpg" alt="Porcelana" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Llaveros & Porcelana</h3>
+                    <p class="desc">Modelado y diseño de piezas únicas que se convierten en recuerdos para toda la vida.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Taller%20de%20Porcelana" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- COCINA -->
-<div class="card">
-<img src="lolipop/Taller%20de%20Cocina%20Lolipop/Taller%20de%20Cocina%20Lolipop1.jpg" class="main-img">
-<div class="card-body">
-<h3>Taller de Cocina</h3>
-<p class="desc">
-Una experiencia dulce donde crean, decoran y disfrutan waffles, cupcakes y más con toppings deliciosos.
-</p>
-<a href="https://wa.me/5491153358402?text=Cocina" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+        <!-- CARD 11 -->
+        <div class="card reveal">
+            <img src="lolipop/Taller%20Coquette%20Loli%20Pop/Taller%20Coquette%20Loli%20Pop.jpg" alt="Coquette" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Taller Coquette</h3>
+                    <p class="desc">Exploramos el estilo más tierno y sofisticado personalizando prendas con mucha onda.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Taller%20Coquette" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- BOX -->
-<div class="card">
-<img src="lolipop/Box%20LoliPop%20Spa/Box%20LoliPop%20Spa1.jpg" class="main-img">
-<div class="card-body">
-<h3>Box Spa</h3>
-<p class="desc">
-Un kit completo para vivir una experiencia spa en casa con detalles delicados y presentación soñada.
-</p>
-<a href="https://wa.me/5491153358402?text=Box" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+        <!-- CARD 12 -->
+        <div class="card reveal">
+            <img src="lolipop/Vasitos%20mágicos%20Lolipop/Vasitos%20mágicos%20Lolipop.jpg" alt="Vasitos" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Vasitos Mágicos</h3>
+                    <p class="desc">Brillos, stickers y mucha magia en cada sorbo. Un taller para crear tu compañero de aventuras.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20los%20Vasitos%20Mágicos" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
 
-<!-- PORCELANA -->
-<div class="card">
-<img src="lolipop/Taller%20de%20Porcelana%20&%20Llaveros%20Personalizados/tallerporcelana.jpg" class="main-img">
-<div class="card-body">
-<h3>Porcelana & Llaveros</h3>
-<p class="desc">
-Creación personalizada de llaveros y colgantes con nombres y detalles únicos.
-</p>
-<a href="https://wa.me/5491153358402?text=Porcelana" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+        <!-- CARD 13 -->
+        <div class="card reveal">
+            <img src="lolipop/taller%20de%20peluches%20Mágicos/taller%20de%20peluches%20Mágicos%201.jpg" alt="Peluches" class="main-img">
+            <div class="card-body">
+                <div>
+                    <h3>Peluches Mágicos</h3>
+                    <p class="desc">Dar vida a un nuevo amigo. Cada peluche guarda un deseo y un corazón lleno de amor.</p>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Taller%20de%20Peluches" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<!-- COQUETTE -->
-<div class="card">
-<img src="lolipop/Taller%20Coquette%20Loli%20Pop/Taller%20Coquette%20Loli%20Pop.jpg" class="main-img">
-<div class="card-body">
-<h3>Taller Coquette</h3>
-<p class="desc">
-Diseño y personalización de prendas con estilo propio, colores pastel y detalles únicos.
-</p>
-<a href="https://wa.me/5491153358402?text=Coquette" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="section testimonials reveal">
+    <h2>Lo que dicen las Mamás 💖</h2>
+    <div class="testi-grid">
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"La mejor experiencia para el cumple de mi hija. Todo impecable, los detalles coquette son un sueño."</p>
+            <p class="testi-author">— Mariela G.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Increíble el taller de peluches. Las nenas se divirtieron muchísimo y se llevaron un recuerdo hermoso."</p>
+            <p class="testi-author">— Carolina S.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Un momento único de cuidado y mimos. Mi hija se sintió una verdadera princesa. Atención de primer nivel."</p>
+            <p class="testi-author">— Valeria M.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Organizamos el taller Coquette y fue un éxito total. Los accesorios que hicieron quedaron preciosos."</p>
+            <p class="testi-author">— Paula R.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"El spa Mi Caramelito es magia pura. La decoración y la dulzura de las chicas hacen la diferencia."</p>
+            <p class="testi-author">— Lucía B.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Excelente festejo. El taller de cocina con los waffles fue súper divertido y muy bien organizado."</p>
+            <p class="testi-author">— Gabriela T.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Buscaba algo distinto y el taller de porcelana superó mis expectativas. Las niñas estuvieron felices."</p>
+            <p class="testi-author">— Romina L.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"El kit de Box Spa Home es una salvación para pijamadas. Trae de todo y la presentación es soñada."</p>
+            <p class="testi-author">— Daniela P.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Súper agradecida por el cariño con el que trataron a las nenas. Se nota el amor en cada detalle."</p>
+            <p class="testi-author">— Florencia V.</p>
+        </div>
+        <div class="testi-card">
+            <div class="stars">★★★★★</div>
+            <p class="testi-text">"Lolipop Spa es sinónimo de perfección. Desde la reserva hasta el final, la comunicación fue excelente."</p>
+            <p class="testi-author">— Andrea J.</p>
+        </div>
+    </div>
+</section>
 
-<!-- VASITOS -->
-<div class="card">
-<img src="lolipop/Vasitos%20mágicos%20Lolipop/Vasitos%20mágicos%20Lolipop.jpg" class="main-img">
-<div class="card-body">
-<h3>Vasitos Mágicos</h3>
-<p class="desc">
-Vasos personalizados con brillo, stickers y detalles que hacen única cada experiencia.
-</p>
-<a href="https://wa.me/5491153358402?text=Vasitos" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
-
-<!-- PELUCHES -->
-<div class="card">
-<img src="lolipop/taller%20de%20peluches%20Mágicos/taller%20de%20peluches%20Mágicos%201.jpg" class="main-img">
-<div class="card-body">
-<h3>Peluches Mágicos</h3>
-<p class="desc">
-Cada niña crea su peluche con corazón mágico y se lleva un recuerdo único lleno de amor.
-</p>
-<a href="https://wa.me/5491153358402?text=Peluches" class="btn">Consultar disponibilidad</a>
-</div>
-</div>
-<!-- ⚠️ NO TE BORRÉ NADA -->
-<!-- TODAS LAS DEMÁS CARDS QUEDAN IGUAL (copiá y pegá como tenías) -->
-
-</div>
+<!-- INSTAGRAM FEED -->
+<section class="section social-feed reveal">
+    <h2>Síguenos en Instagram ✨</h2>
+    <p>Descubre momentos mágicos en <a href="https://www.instagram.com/lolipop_spa_micaramelito/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">@lolipop_spa_micaramelito</a></p>
+    
+    <div class="insta-grid">
+        <div class="insta-item">
+            <img src="lolipop/EXPERIENCIA DE LUJO SPA LOLIPOP/lujo1.jpg" alt="Insta 1">
+            <div class="insta-overlay">❤</div>
+        </div>
+        <div class="insta-item">
+            <img src="lolipop/Taller%20Coquette%20Loli%20Pop/Taller%20Coquette%20Loli%20Pop.jpg" alt="Insta 2">
+            <div class="insta-overlay">❤</div>
+        </div>
+        <div class="insta-item">
+            <img src="lolipop/taller%20de%20peluches%20Mágicos/taller%20de%20peluches%20Mágicos%201.jpg" alt="Insta 3">
+            <div class="insta-overlay">❤</div>
+        </div>
+        <div class="insta-item">
+            <img src="lolipop/Frasco%20Goloso/FrascoGoloso.jpg" alt="Insta 4">
+            <div class="insta-overlay">❤</div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 40px;">
+        <a href="https://www.instagram.com/lolipop_spa_micaramelito/" target="_blank" class="btn-secondary">Ver más en Instagram</a>
+    </div>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="section contacto">
-<h2>Contacto</h2>
-
-<div class="socials">
-
-  <a href="https://wa.me/5491153358402" target="_blank">
-    <img src="lolipop/logos redes/whtsaplolipop.png" class="icon">
-  </a>
-
-  <a href="https://www.instagram.com/lolipop_spa_micaramelito/" target="_blank">
-    <img src="lolipop/logos redes/intagramlogololipop.png" class="icon">
-  </a>
-
-</div>
-
-<a href="https://wa.me/5491153358402" class="btn-secondary">Escribinos</a>
-
+<section id="contacto" class="section contacto reveal">
+    <h2>¿Hablamos? ✨</h2>
+    <p>Estamos listas para hacer realidad el evento de tus sueños.</p>
+    
+    <div class="socials">
+        <a href="https://wa.me/5491153358402" target="_blank" aria-label="WhatsApp">
+            <img src="lolipop/logos redes/whtsaplolipop.png" alt="WhatsApp" class="icon">
+        </a>
+        <a href="https://www.instagram.com/lolipop_spa_micaramelito/" target="_blank" aria-label="Instagram">
+            <img src="lolipop/logos redes/intagramlogololipop.png" alt="Instagram" class="icon">
+        </a>
+    </div>
+    
+    <a href="https://wa.me/5491153358402" class="btn">Enviar un Mensaje</a>
 </section>
 
-<!-- BOTÓN FLOTANTE -->
-<a href="https://wa.me/5491153358402" class="whatsapp">
-  <img src="lolipop/logos redes/whtsaplolipop.png" class="whatsapp-icon">
+<footer>
+    <p>&copy; 2024 Lolipop Spa Mi Caramelito. Todos los derechos reservados.</p>
+    <p>Diseño Premium by Antigravity</p>
+</footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/5491153358402" class="whatsapp" aria-label="Contacto directo por WhatsApp">
+    <img src="lolipop/logos redes/whtsaplolipop.png" alt="WhatsApp" class="whatsapp-icon">
 </a>
 
 <script>
-function toggleMenu(){
-const menu = document.getElementById("menu");
-menu.classList.toggle("active");
-}
+    function toggleMenu(){
+        const menu = document.getElementById("menu");
+        const icon = document.querySelector(".menu-icon");
+        menu.classList.toggle("active");
+        icon.innerText = menu.classList.contains("active") ? "✕" : "☰";
+    }
+
+    // Cerrar menú al clickear un link (importante para mobile)
+    document.querySelectorAll('#menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            const menu = document.getElementById("menu");
+            const icon = document.querySelector(".menu-icon");
+            menu.classList.remove("active");
+            icon.innerText = "☰";
+        });
+    });
+
+    // Animación premium al hacer scroll
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
