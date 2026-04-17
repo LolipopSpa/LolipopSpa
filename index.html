@@ -585,6 +585,7 @@
 <footer>
     <p>&copy; 2024 Lolipop Spa Mi Caramelito. Todos los derechos reservados.</p>
     <p>Diseño Premium by Antigravity</p>
+    <p><a href="admin.html">Panel Admin</a></p>
 </footer>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
@@ -592,7 +593,16 @@
     <img src="lolipop/logos redes/whtsaplolipop.png" alt="WhatsApp" class="whatsapp-icon">
 </a>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="cloud-config.js"></script>
+<script src="cloud-db.js"></script>
+<script src="content-manager.js"></script>
 <script>
+    const __lolipopParams = new URLSearchParams(window.location.search);
+    if (window.LolipopContentManager && !__lolipopParams.has('rawContent')) {
+        window.LolipopContentManager.loadState().catch(() => {});
+    }
+
     function toggleMenu(){
         const menu = document.getElementById("menu");
         const icon = document.querySelector(".menu-icon");

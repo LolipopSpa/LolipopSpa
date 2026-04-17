@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7c5dd" />
+  <title>Panel Admin | Lolipop Spa</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img src="lolipop/logo/logololipop.jpg" alt="Lolipop Spa" />
+      <div class="logo-text">
+        <h1>Lolipop Spa</h1>
+        <span>Panel Administrador</span>
+      </div>
+    </div>
+    <nav id="menu">
+      <a href="index.html" target="_blank" rel="noopener">Abrir sitio</a>
+    </nav>
+  </header>
+
+  <main class="admin-wrap">
+    <section id="loginSection" class="admin-card">
+      <h2>Ingreso de administrador</h2>
+      <div class="admin-grid">
+        <div>
+          <label for="loginUser">Usuario (email si nube)</label>
+          <input id="loginUser" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" />
+        </div>
+        <div>
+          <label for="loginPass">Contrasena</label>
+          <input id="loginPass" type="password" autocomplete="current-password" />
+        </div>
+      </div>
+      <div class="admin-actions">
+        <button class="admin-btn primary" id="loginBtn" type="button">Entrar</button>
+      </div>
+      <p class="admin-note">Modo local: Lucas / click24web. Modo nube: email y contrasena de Supabase Auth.</p>
+    </section>
+
+    <section id="panelSection" class="hidden">
+      <div class="admin-card">
+        <h2>Contenido global</h2>
+        <div class="admin-grid">
+          <div>
+            <label for="heroTitle">Hero titulo</label>
+            <input id="heroTitle" type="text" />
+          </div>
+          <div>
+            <label for="heroButtonText">Boton hero texto</label>
+            <input id="heroButtonText" type="text" />
+          </div>
+          <div>
+            <label for="heroButtonHref">Boton hero link</label>
+            <input id="heroButtonHref" type="text" />
+          </div>
+          <div>
+            <label for="whatsappNumber">WhatsApp numero</label>
+            <input id="whatsappNumber" type="text" inputmode="numeric" />
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <label for="heroSubtitle">Hero subtitulo</label>
+          <textarea id="heroSubtitle"></textarea>
+        </div>
+        <div style="margin-top: 12px;">
+          <label for="aboutHtml">Nosotros (HTML permitido)</label>
+          <textarea id="aboutHtml"></textarea>
+        </div>
+        <div style="margin-top: 12px;">
+          <label for="footerCopyright">Footer copyright</label>
+          <input id="footerCopyright" type="text" />
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn" id="saveGlobalBtn" type="button">Guardar global</button>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <h2>Editar servicio</h2>
+        <form id="serviceForm">
+          <input type="hidden" id="serviceIndex" />
+          <div class="admin-grid">
+            <div>
+              <label for="serviceTitle">Titulo</label>
+              <input id="serviceTitle" type="text" required />
+            </div>
+            <div>
+              <label for="serviceImageAlt">Alt imagen</label>
+              <input id="serviceImageAlt" type="text" required />
+            </div>
+            <div>
+              <label for="serviceImageSrc">Ruta imagen</label>
+              <input id="serviceImageSrc" type="text" placeholder="lolipop/carpeta/foto.jpg o URL" required />
+            </div>
+            <div>
+              <label for="serviceConsultText">Texto boton</label>
+              <input id="serviceConsultText" type="text" required />
+            </div>
+            <div>
+              <label for="serviceConsultHref">Link boton</label>
+              <input id="serviceConsultHref" type="text" required />
+            </div>
+          </div>
+
+          <div class="image-uploader">
+            <label>Subir imagen (se guarda como base64 local)</label>
+            <div id="imageDropZone" class="drop-zone" tabindex="0">Arrastra una imagen aqui o toca para elegir archivo</div>
+            <input id="serviceImageFile" type="file" accept="image/*" class="hidden" />
+            <div class="uploader-actions">
+              <button class="admin-btn" id="pickImageBtn" type="button">Elegir imagen</button>
+              <button class="admin-btn" id="removeImageBtn" type="button">Quitar imagen subida</button>
+            </div>
+            <div class="image-preview-wrap">
+              <img id="imagePreview" class="image-preview hidden" alt="Preview" />
+              <p id="imageStatus" class="admin-note">No hay imagen seleccionada.</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 12px;">
+            <label for="serviceDescription">Descripcion principal</label>
+            <textarea id="serviceDescription" required></textarea>
+          </div>
+
+          <div style="margin-top: 12px;">
+            <label for="serviceDetailsDescription">Descripcion detalles</label>
+            <textarea id="serviceDetailsDescription"></textarea>
+          </div>
+
+          <div style="margin-top: 12px;">
+            <label for="serviceDetailsItems">Items detalles (uno por linea)</label>
+            <textarea id="serviceDetailsItems"></textarea>
+          </div>
+
+          <div class="admin-actions">
+            <button class="admin-btn primary" type="submit">Guardar servicio</button>
+            <button class="admin-btn" id="addServiceBtn" type="button">Agregar nuevo</button>
+            <button class="admin-btn" id="cancelEditBtn" type="button">Cancelar edicion</button>
+            <button class="admin-btn" id="logoutBtn" type="button">Cerrar sesion</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-card admin-table-wrap">
+        <h2>Listado actual</h2>
+        <div style="margin-bottom: 12px;">
+          <label for="adminSearchInput">Buscar servicio</label>
+          <input id="adminSearchInput" type="text" placeholder="Buscar por titulo o descripcion..." autocomplete="off" spellcheck="false" />
+        </div>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Img</th>
+              <th>Titulo</th>
+              <th>Descripcion</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="servicesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <iframe id="sourceFrame" src="index.html?rawContent=1" title="Fuente de contenido" hidden></iframe>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="cloud-config.js"></script>
+  <script src="cloud-db.js"></script>
+  <script src="content-manager.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
