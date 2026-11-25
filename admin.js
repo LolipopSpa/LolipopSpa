@@ -32,6 +32,7 @@ const serviceConsultHrefInput = document.getElementById('serviceConsultHref');
 const serviceDescriptionInput = document.getElementById('serviceDescription');
 const serviceDetailsDescriptionInput = document.getElementById('serviceDetailsDescription');
 const serviceDetailsItemsInput = document.getElementById('serviceDetailsItems');
+const serviceDetailsClosingInput = document.getElementById('serviceDetailsClosing');
 const addServiceBtn = document.getElementById('addServiceBtn');
 
 const serviceImageFileInput = document.getElementById('serviceImageFile');
@@ -181,6 +182,7 @@ function clearServiceForm() {
   serviceDescriptionInput.value = '';
   serviceDetailsDescriptionInput.value = '';
   serviceDetailsItemsInput.value = '';
+  serviceDetailsClosingInput.value = '';
   serviceImageFileInput.value = '';
   uploadedImageData = '';
   existingImageValue = '';
@@ -250,6 +252,7 @@ function editService(index) {
   serviceDescriptionInput.value = service.description || '';
   serviceDetailsDescriptionInput.value = service.detailsDescription || '';
   serviceDetailsItemsInput.value = Array.isArray(service.detailsItems) ? service.detailsItems.join('\n') : '';
+  serviceDetailsClosingInput.value = service.detailsClosing || '';
 
   serviceImageFileInput.value = '';
   uploadedImageData = '';
@@ -289,18 +292,19 @@ function newServiceTemplate() {
     hasDetails: false,
     detailsDescription: '',
     detailsItems: [],
+    detailsClosing: '',
   };
 }
 
-async function initState() {
+async function initState(migrateCatalog) {
   const localRaw = localStorage.getItem(contentManager.storageKey);
-  const localState = localRaw ? contentManager.normalizeState(JSON.parse(localRaw)) : null;
+  const localState = localRaw ? migrateCatalog(JSON.parse(localRaw)) : null;
 
   if (window.CloudDB?.enabled) {
     try {
       const remote = await window.CloudDB.fetchContent();
       if (remote) {
-        state = contentManager.normalizeState(remote);
+        state = migrateCatalog(remote);
         contentManager.saveState(state);
       } else if (localState) {
         state = localState;
@@ -344,7 +348,7 @@ async function bootstrap() {
   }
 
   defaultState = managerInFrame.getStateFromDom();
-  await initState();
+  await initState(managerInFrame.migrateCatalog);
 
   const ok = await isAuthenticated();
   if (ok) showPanel();
@@ -455,6 +459,7 @@ addServiceBtn.addEventListener('click', async () => {
   const consultHref = serviceConsultHrefInput.value.trim();
   const description = serviceDescriptionInput.value.trim();
   const detailsDescription = serviceDetailsDescriptionInput.value.trim();
+  const detailsClosing = serviceDetailsClosingInput.value.trim();
   const detailsItems = serviceDetailsItemsInput.value
     .split('\n')
     .map((line) => line.trim())
@@ -477,7 +482,8 @@ addServiceBtn.addEventListener('click', async () => {
     description,
     detailsDescription,
     detailsItems,
-    hasDetails: Boolean(detailsDescription || detailsItems.length),
+    detailsClosing,
+    hasDetails: Boolean(detailsDescription || detailsItems.length || detailsClosing),
   };
 
   state.services.push(newService);
@@ -507,6 +513,7 @@ serviceForm.addEventListener('submit', async (event) => {
   const consultHref = serviceConsultHrefInput.value.trim();
   const description = serviceDescriptionInput.value.trim();
   const detailsDescription = serviceDetailsDescriptionInput.value.trim();
+  const detailsClosing = serviceDetailsClosingInput.value.trim();
   const detailsItems = serviceDetailsItemsInput.value
     .split('\n')
     .map((line) => line.trim())
@@ -526,7 +533,8 @@ serviceForm.addEventListener('submit', async (event) => {
     description,
     detailsDescription,
     detailsItems,
-    hasDetails: Boolean(detailsDescription || detailsItems.length),
+    detailsClosing,
+    hasDetails: Boolean(detailsDescription || detailsItems.length || detailsClosing),
   };
 
   let rollback = null;

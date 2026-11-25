@@ -453,6 +453,28 @@ h2::after {
   transform: scale(1.1);
 }
 
+.card:has(> .main-img[src="lolipop/Pink-Beauty-Glam/pink-beauty-glam.jpg"])::before {
+  display: none;
+}
+
+.card > .main-img[src="lolipop/Pink-Beauty-Glam/pink-beauty-glam.jpg"] {
+  height: auto;
+  max-height: 600px;
+  aspect-ratio: 1122 / 1402;
+  object-fit: contain;
+  background: #fff0f6;
+  mask-image: none;
+  transform: none;
+}
+
+.card:has(> .main-img[src="lolipop/Pink-Beauty-Glam/pink-beauty-glam.jpg"]) .desc {
+  white-space: pre-line;
+}
+
+.card:has(> .main-img[src="lolipop/Pink-Beauty-Glam/pink-beauty-glam.jpg"]) .details-list li::before {
+  content: none;
+}
+
 .card-body {
   padding: 50px 40px;
   flex-grow: 1;
@@ -544,6 +566,12 @@ h2::after {
   content: "🎀";
   font-size: 14px;
   filter: drop-shadow(0 2px 4px rgba(228, 138, 176, 0.3));
+}
+
+.details-closing {
+  color: #666;
+  font-size: 14.5px;
+  line-height: 1.4;
 }
 
 .btn-read-more {

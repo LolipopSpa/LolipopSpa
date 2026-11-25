@@ -555,6 +555,34 @@
                 <a href="https://wa.me/5491153358402?text=Hola!%20Me%20interesa%20el%20Taller%20de%20Pulseras%20estilo%20Pandora" class="btn-secondary">Consultar</a>
             </div>
         </div>
+        <!-- PINK BEAUTY & GLAM -->
+        <div class="card reveal" data-catalog-addition="1">
+            <img src="lolipop/Pink-Beauty-Glam/pink-beauty-glam.jpg" alt="Flyer del taller Pink Beauty &amp; Glam de LoliPop Spa" class="main-img" width="1122" height="1402" loading="lazy">
+            <div class="card-body">
+                <div>
+                    <h3>🎀 Pink Beauty &amp; Glam</h3>
+                    <p class="desc">Universo Victoria’s Secret
+
+¡Una experiencia llena de brillo, belleza y glamour!
+
+Las invitadas se convierten en protagonistas de su propio universo beauty, personalizando sus productos favoritos y creando un kit de belleza con mucho estilo.</p>
+
+                    <button class="btn-read-more" type="button" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="pink-beauty-glam-details">Leer más <i aria-hidden="true">↓</i></button>
+
+                    <div class="card-details" id="pink-beauty-glam-details">
+                        <p class="desc">¿Qué incluye?</p>
+                        <ul class="details-list">
+                            <li>💗 Customización de Body Splash: cada invitada personaliza su body splash favorito.</li>
+                            <li>🎀 Hair Glam: un gancho de pelo para completar su look.</li>
+                            <li>💋 Lip Gloss: su gloss para sumar brillo a su beauty routine.</li>
+                            <li>🛍️ Presentación especial: ¡todo se entrega en una bolsita estilo Victoria’s Secret!</li>
+                        </ul>
+                        <p class="details-closing">¡Creá tu propio estilo, brillá y llevate tu kit Pink Beauty &amp; Glam!</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/5491153358402?text=Hola%21%20Me%20interesa%20el%20taller%20Pink%20Beauty%20%26%20Glam" class="btn-secondary">Consultar</a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -721,9 +749,10 @@
     // 1. Expansión de tarjetas
     function toggleDetails(btn) {
         const card = btn.closest('.card');
-        card.classList.toggle('expanded');
-        btn.querySelector('i').innerText = card.classList.contains('expanded') ? '↑' : '↓';
-        btn.firstChild.textContent = card.classList.contains('expanded') ? 'Cerrar ' : 'Leer más ';
+        const expanded = card.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', String(expanded));
+        btn.querySelector('i').innerText = expanded ? '↑' : '↓';
+        btn.firstChild.textContent = expanded ? 'Cerrar ' : 'Leer más ';
     }
 
     // 2. Scroll Progress y Header Dinámico

@@ -21,6 +21,7 @@
     const detailsItems = Array.isArray(service?.detailsItems)
       ? service.detailsItems.map((item) => String(item || '').trim()).filter(Boolean)
       : [];
+    const detailsClosing = String(service?.detailsClosing || '').trim();
 
     return {
       imageSrc: String(service?.imageSrc || '').trim(),
@@ -29,14 +30,16 @@
       description: String(service?.description || '').trim(),
       consultHref: String(service?.consultHref || '').trim(),
       consultText: String(service?.consultText || 'Consultar').trim() || 'Consultar',
-      hasDetails: Boolean(service?.hasDetails || String(service?.detailsDescription || '').trim() || detailsItems.length),
+      hasDetails: Boolean(service?.hasDetails || String(service?.detailsDescription || '').trim() || detailsItems.length || detailsClosing),
       detailsDescription: String(service?.detailsDescription || '').trim(),
       detailsItems,
+      detailsClosing,
     };
   }
 
   function normalizeState(state) {
     return {
+      catalogVersion: Number.isSafeInteger(state?.catalogVersion) ? state.catalogVersion : 0,
       hero: {
         title: String(state?.hero?.title || '').trim(),
         subtitle: String(state?.hero?.subtitle || '').trim(),
@@ -56,42 +59,45 @@
     };
   }
 
+  function readServiceCard(card) {
+    const image = card.querySelector('.main-img');
+    const title = card.querySelector('.card-body h3');
+    const mainDesc = card.querySelector('.card-body > div > .desc');
+    const consultLink = card.querySelector('.btn-secondary');
+    const details = card.querySelector('.card-details');
+    const detailsDesc = details?.querySelector('.desc');
+    const detailsItems = details
+      ? Array.from(details.querySelectorAll('.details-list li'), (li) => li.textContent.trim())
+      : [];
+
+    return {
+      imageSrc: image?.getAttribute('src') || '',
+      imageAlt: image?.getAttribute('alt') || '',
+      title: title?.textContent.trim() || '',
+      description: mainDesc?.textContent.trim() || '',
+      consultHref: consultLink?.getAttribute('href') || '',
+      consultText: consultLink?.textContent.trim() || 'Consultar',
+      hasDetails: Boolean(details),
+      detailsDescription: detailsDesc?.textContent.trim() || '',
+      detailsItems,
+      detailsClosing: details?.querySelector('.details-closing')?.textContent.trim() || '',
+    };
+  }
+
   function getStateFromDom() {
     const heroTitle = document.querySelector('.hero h2');
     const heroSubtitle = document.querySelector('.hero p');
     const heroButton = document.querySelector('.hero .btn');
     const aboutText = document.querySelector('#nosotros .about-box p');
     const footerCopyright = document.querySelector('footer p:first-child');
-
-    const cards = Array.from(document.querySelectorAll('#catalogo .card')).map((card) => {
-      const image = card.querySelector('.main-img');
-      const title = card.querySelector('.card-body h3');
-      const mainDesc = card.querySelector('.card-body > div > .desc');
-      const consultLink = card.querySelector('.btn-secondary');
-      const details = card.querySelector('.card-details');
-      const detailsDesc = details ? details.querySelector('.desc') : null;
-      const detailsItems = details
-        ? Array.from(details.querySelectorAll('.details-list li')).map((li) => li.textContent.trim())
-        : [];
-
-      return {
-        imageSrc: image ? image.getAttribute('src') || '' : '',
-        imageAlt: image ? image.getAttribute('alt') || '' : '',
-        title: title ? title.textContent.trim() : '',
-        description: mainDesc ? mainDesc.textContent.trim() : '',
-        consultHref: consultLink ? consultLink.getAttribute('href') || '' : '',
-        consultText: consultLink ? consultLink.textContent.trim() : 'Consultar',
-        hasDetails: Boolean(details),
-        detailsDescription: detailsDesc ? detailsDesc.textContent.trim() : '',
-        detailsItems,
-      };
-    });
+    const cards = Array.from(document.querySelectorAll('#catalogo .card'), readServiceCard);
 
     const whatsappLinks = Array.from(document.querySelectorAll('a[href*="wa.me/"]'));
     const firstWa = whatsappLinks[0] ? whatsappLinks[0].getAttribute('href') || '' : '';
     const waNumber = normalizeWhatsApp(firstWa.replace(/^https?:\/\/wa\.me\//i, '').split('?')[0]);
 
     return normalizeState({
+      catalogVersion,
       hero: {
         title: heroTitle ? heroTitle.textContent.trim() : '',
         subtitle: heroSubtitle ? heroSubtitle.textContent.trim() : '',
@@ -109,6 +115,33 @@
       },
       services: cards,
     });
+  }
+
+  // Add published catalog entries to older snapshots once, preserving admin edits and deletions thereafter.
+  const catalogAdditions = Array.from(document.querySelectorAll('#catalogo [data-catalog-addition]'), (card) => ({
+    version: Number(card.dataset.catalogAddition),
+    service: readServiceCard(card),
+  }));
+  const catalogVersion = Math.max(0, ...catalogAdditions.map(({ version }) => version));
+
+  function migrateCatalog(inputState) {
+    const state = normalizeState(inputState);
+    const titleKey = (title) => title.replace(/^🎀\s*/u, '').toLowerCase();
+
+    for (const { version, service } of catalogAdditions) {
+      if (version <= state.catalogVersion) continue;
+      const exists = state.services.some((entry) =>
+        entry.imageSrc === service.imageSrc || titleKey(entry.title) === titleKey(service.title)
+      );
+      if (!exists) {
+        const consultHref = new URL(service.consultHref);
+        if (state.whatsapp.number) consultHref.pathname = '/' + state.whatsapp.number;
+        state.services.push({ ...service, consultHref: consultHref.href });
+      }
+    }
+
+    state.catalogVersion = Math.max(state.catalogVersion, catalogVersion);
+    return state;
   }
 
   function ensureCardBody(card) {
@@ -195,7 +228,8 @@
         readMoreBtn.className = 'btn-read-more';
         readMoreBtn.type = 'button';
         readMoreBtn.setAttribute('onclick', 'toggleDetails(this)');
-        readMoreBtn.innerHTML = 'Leer mas <i>↓</i>';
+        readMoreBtn.setAttribute('aria-expanded', 'false');
+        readMoreBtn.innerHTML = 'Leer más <i aria-hidden="true">↓</i>';
         contentWrap.appendChild(readMoreBtn);
       }
 
@@ -221,6 +255,18 @@
           detailsList.appendChild(li);
         });
       }
+
+      let closing = details.querySelector('.details-closing');
+      if (normalized.detailsClosing) {
+        if (!closing) {
+          closing = document.createElement('p');
+          closing.className = 'details-closing';
+          details.appendChild(closing);
+        }
+        closing.textContent = normalized.detailsClosing;
+      } else if (closing) {
+        closing.remove();
+      }
     } else {
       if (readMoreBtn) readMoreBtn.remove();
       if (details) details.remove();
@@ -239,7 +285,7 @@
   }
 
   function applyState(inputState) {
-    const state = normalizeState(inputState);
+    const state = migrateCatalog(inputState);
 
     const heroTitle = document.querySelector('.hero h2');
     const heroSubtitle = document.querySelector('.hero p');
@@ -295,7 +341,7 @@
       if (window.CloudDB?.enabled) {
         const remote = await window.CloudDB.fetchContent();
         if (remote) {
-          const normalized = normalizeState(remote);
+          const normalized = migrateCatalog(remote);
           applyState(normalized);
           localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
           return normalized;
@@ -307,8 +353,12 @@
         return null;
       }
 
-      const parsed = normalizeState(JSON.parse(raw));
+      const saved = JSON.parse(raw);
+      const parsed = migrateCatalog(saved);
       applyState(parsed);
+      if (saved?.catalogVersion !== parsed.catalogVersion) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+      }
       return parsed;
     } catch (error) {
       console.error('No se pudo cargar el contenido del panel admin.', error);
@@ -327,6 +377,7 @@
   window.LolipopContentManager = {
     storageKey: STORAGE_KEY,
     normalizeState,
+    migrateCatalog,
     getStateFromDom,
     applyState,
     loadState,
